@@ -44,17 +44,17 @@ SUBMIT
 
 # 1. What does one row represent?
 # Your answer:
-#
+# A row represents visually to me a line of data for example a "list, or a set or a tupple".
 #
 
 # 2. Which fields hold numbers, and which hold text?
 # Your answer:
-#
+# The first 2 blocks hold text i.e volunteer name and day of the week, while the last block holds the hours.
 #
 
 # 3. What already looks wrong, missing or inconsistent?
 # Your answer:
-#
+# At first the header was off by one indent and was eventually fixed.
 #
 
 ############################################################################
@@ -64,11 +64,16 @@ SUBMIT
 # ===== Step 1: Write total_sessions(), Then Call It on Every Class and on Swim Only =====
 # One function that adds up a sessions column, called twice: once on every
 # record, once on just the Swim records.
-#
+
+
 # 1. Predict two numbers by hand off the file. Total sessions across every
 #    class: add the third field down all 13 records. Total sessions for Swim
 #    only: add that same field, but only on the records whose class is Swim.
 #    Write both in a comment before you run anything.
+
+# I'm predicting 50 for the total sessions across all class.
+# actual number, 45
+
 # 2. Write total_sessions(records) so it adds up the sessions column across
 #    every record in records and hands the total back with return, not
 #    print.
@@ -83,12 +88,29 @@ with open("data/rec_center_signups.txt") as f:
                if line and not line.startswith("#")]
 
 def total_sessions(records):
-    # TODO: add up the sessions column across every record in `records`
-    for record in records:
-    # TODO: hand the total back to whoever called this. Do not print it.
-    pass
+  total = 0
+  #initializes total as 0
+  for record in records:
+    fields = record.split(",")
+    if fields[1] == "class_name":
+        continue
 
+    total = total + int(fields[2])
+
+    return total
+  
+    #checks for correct field in row and totals up the column sessions.
+
+    # TODO: add up the sessions column across every record in `records`
+    # TODO: hand the total back to whoever called this. Do not print it.
 swim_only = []
+for record in signups: 
+    fields = record.split(",")
+    if fields[1] == "Swim":
+        swim_only.append(record)
+pass
+
+
 # TODO: fill swim_only with just the Swim records
 
 print("every class:", total_sessions(signups))
@@ -100,6 +122,7 @@ print("swim only:  ", total_sessions(swim_only))
 #
 # 1. Predict both returned: counts in a comment, reading the third field
 #    down the file: once for 4 or more, once for 2 or more.
+
 # 2. Write count_long_bookings(records, minimum) so it counts the records
 #    whose sessions number is minimum or more, and returns that count.
 # 3. Write show_long_bookings(records, minimum) so it prints a sentence with
