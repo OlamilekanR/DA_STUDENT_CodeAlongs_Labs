@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Data Challenge: Build It Once, Use It Again
 GitBook Quest 1.2: Build It Once, Use It Again
 
@@ -65,8 +66,6 @@ SUBMIT
 # record, once on just the Swim records.
 
 
-
-
 # 1. Predict two numbers by hand off the file. Total sessions across every
 #    class: add the third field down all 13 records. Total sessions for Swim
 #    only: add that same field, but only on the records whose class is Swim.
@@ -127,7 +126,6 @@ print("swim only:  ", total_sessions(swim_only))
 # 1. Predict both returned: counts in a comment, reading the third field
 #    down the file: once for 4 or more, once for 2 or more.
 
-
 # 2. Write count_long_bookings(records, minimum) so it counts the records
 #    whose sessions number is minimum or more, and returns that count.
 # 3. Write show_long_bookings(records, minimum) so it prints a sentence with
@@ -143,16 +141,13 @@ print("swim only:  ", total_sessions(swim_only))
 # other only puts something on the screen.
 
 def count_long_bookings(records, minimum):
-    count = 0
-    for record in records:
-        fields = record.split(",")
-        if int(fields[2]) >= minimum:
-            count += 1
-    return count
+    # TODO: count the records whose sessions number is `minimum` or more
+    # TODO: return the count
+    pass
 
 def show_long_bookings(records, minimum):
-    count = count_long_bookings(records, minimum)
-    print(f"There are {count} bookings with {minimum} or more sessions.")
+    # TODO: print a sentence with the same count in it. Only print.
+    pass
 
 print("returned:", count_long_bookings(signups, 4))
 print("returned:", count_long_bookings(signups, 2))
@@ -161,7 +156,7 @@ handed_back = show_long_bookings(signups, 4)
 print("what show_long_bookings handed back:", handed_back)
 
 # Your answer:
-# handed_back holds None because show_long_bookings uses print instead of return.
+#
 #
 
 # ----- Share Out: Day 1 -----
@@ -210,19 +205,16 @@ print("what show_long_bookings handed back:", handed_back)
 sessions_cutoff = 4
 
 def count_reaching_outside(records):
-    count = 0
-    for record in records:
-        fields = record.split(",")
-        if int(fields[2]) >= sessions_cutoff:
-            count += 1
-    return count
+    # TODO: same count as count_long_bookings, but take NO minimum
+    # parameter. Read sessions_cutoff from outside the function instead.
+    pass
 
 print("cutoff", sessions_cutoff, "gives", count_reaching_outside(signups))
 
 sessions_cutoff = 2
 
-print("cutoff", sessions_cutoff, "gives", count_reaching_outside(signups))
-print("count_long_bookings comparison:", count_long_bookings(signups, 4))
+# TODO: call count_reaching_outside(signups) again, unchanged, and print it
+# TODO: print count_long_bookings(signups, 4) underneath for comparison
 
 # ===== Step 4: Pass the Last Member In and Out, Then Trigger an UnboundLocalError =====
 # The coordinator wants each sign-up printed next to the one before it. The
@@ -251,14 +243,14 @@ print("count_long_bookings comparison:", count_long_bookings(signups, 4))
 # the steps after it can run.
 
 def log_signup(record, previous_member):
-    fields = record.split(",")
-    current_member = fields[0]
-    print(f"previous: {previous_member}, current: {current_member}")
-    return current_member
+    # TODO: pull the member name out of `record`
+    # TODO: print the previous member and this one on one line
+    # TODO: return this member's name
+    pass
 
 last_member = "nobody yet"
-last_member = log_signup(signups[0], last_member)
-last_member = log_signup(signups[1], last_member)
+# TODO: call log_signup on signups[0], then on signups[1], storing
+# what it returns back into last_member each time
 
 last_seen = "nobody yet"
 
@@ -268,10 +260,10 @@ def log_signup_broken(record):
     last_seen = record.split(",")[0]
     return last_seen
 
-# log_signup_broken(signups[2])
+log_signup_broken(signups[2])
 
 # Your answer:
-# UnboundLocalError: local variable 'last_seen' referenced before assignment. Occurs because Python treats last_seen as local when it is assigned inside the function.
+#
 #
 
 # ----- Share Out: Day 2 -----
@@ -318,22 +310,16 @@ def log_signup_broken(record):
 # Three function names. Everything else is yours.
 
 def sessions_in(record):
-    fields = record.split(",")
-    return int(fields[2])
+    pass
 
 def signups_for(records, member):
-    return [r for r in records if r.split(",")[0] == member]
+    pass
 
 def total_for(records, member):
-    member_records = signups_for(records, member)
-    total = 0
-    for r in member_records:
-        total += sessions_in(r)
-    return total
+    # This one should get its work done by calling the other two.
+    pass
 
-members = ["Nia", "Omar", "Tess", "Rafi", "Gwen"]
-for m in members:
-    print(f"{m}'s total sessions:", total_for(signups, m))
+# TODO: print a line per member
 
 # ===== Step 6: Run total_for() on Five Inputs Nobody Asked For, Then Judge Each Answer =====
 # No new functions. Call the ones you already have on inputs nobody asked
@@ -358,16 +344,11 @@ for m in members:
 # No new functions. Call the ones you already have, on inputs nobody
 # asked for, and write a verdict beside each printed result.
 
-print("Empty list total:", total_for([], "Gwen"))  # Verdict: Right (0 sessions)
-print("Single record total:", total_for([signups[0]], "Nia"))  # Verdict: Right
-print("Missing name total:", total_for(signups, "Marco"))  # Verdict: Right (0 sessions)
-print("Wrong case total:", total_for(signups, "nia"))  # Verdict: Just a number that did not crash (0 sessions due to strict case matching)
-print("Signups for empty list:", signups_for([], "Gwen"))  # Verdict: Right ([])
-
-all_members_sum = sum(total_for(signups, m) for m in members)
-print("Sum of per-member totals:", all_members_sum)
-print("Whole file total sessions:", total_sessions(signups))
-print("Do they match?", all_members_sum == total_sessions(signups))  # Verdict: Right (They match)
+# TODO: an empty list
+# TODO: a list holding exactly one record
+# TODO: a member name that is not in the file at all
+# TODO: a name that differs from a real member's only by capitalization
+# TODO: then: do the per-member totals add up to the whole-file total?
 
 # ----- Share Out: Day 3 -----
 # Last 15 minutes, back together as a class. Bring:

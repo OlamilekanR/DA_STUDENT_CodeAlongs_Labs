@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Pick the Right Container: see DataChallengeOverview&Steps.md."""
-
+import csv
 import json
+from pathlib import Path
 
-DATA_FILE = "station_taps.csv"  # edit the filepath with the data
+DATA_FILE = "/Users/Marcy_Student/Documents/DA_STUDENT_CodeAlongs_Labs/module-1-python-foundations/data-challenges/data/station_taps.csv"  # edit the filepath with the data
 
-with open(DATA_FILE) as f:
-    rows = [line.split(",") for line in f.read().splitlines() if line]
-
+with open(DATA_FILE,"r") as f:
+    rows = list(csv.reader(f))
 header = rows[0]
 taps = rows[1:]
 
@@ -17,10 +17,16 @@ taps = rows[1:]
 # Step 1: Write `scan_for()` and Count Its Comparisons for Three Tap IDs
 def scan_for(tap_id, records):
     # TODO: assign `comparisons` to 0
+    comparisons = 0
     # TODO: loop over `records`; add 1 to `comparisons` for every row
+    for row in records:
+        comparisons +=1
+       
     # TODO: inside the loop, return `comparisons` when row[0] == tap_id
+        if row[0] == tap_id:
+            return comparisons
     # TODO: after the loop, return `comparisons`
-    pass
+    return comparisons
 
 
 print("columns:", header)
@@ -39,12 +45,20 @@ print("comparisons to find T999:", scan_for("T999", taps))
 for size in [5, 10, 20, 40]:
     worst = scan_for("T999", taps[:size])
     # TODO: print "rows:", `size`, "| worst-case comparisons:", `worst`
+    print("rows:", size, "| worst-case comparisons:", worst)
 # TODO: assign `pairs` to 0; loop over `taps` with a loop over `taps` inside
+pairs = 0
+for row1 in taps:
+    for row2 in taps:
 # TODO: add 1 to `pairs` in the inner loop
+        pairs += 1
 # TODO: print len(taps) and `pairs`
+print(len(taps))
+print((pairs))
 # TODO: assign `big` to len(taps) * 10
+big = len(taps) * 10
 # TODO: print the scan's worst case and the pair loop's count on `big` rows
-
+print("scan worst case on big rows:", scan_for("T999", taps[:big]), "| pair loop count:", big * big)
 # Step 2, answer 1:
 #
 # Step 2, answer 2:
@@ -55,12 +69,27 @@ for size in [5, 10, 20, 40]:
 
 # Step 3: Count Taps Per Card With Two Parallel Lists, and Their Comparisons
 # TODO: assign `card_ids` to an empty list (each card, first-seen order)
+card_ids = []
 # TODO: assign `tap_counts` to an empty list (the count for card_ids[i])
+tap_counts = []
 # TODO: assign `comparisons` to 0
+comparisons = 0
 # TODO: loop over `taps`; assign `card` to row[1] and `found` to False
+for row in taps:
+    card = row[1]
+    found = False
 # TODO: inside it, loop over range(len(card_ids)); add 1 to `comparisons`
+for i in range(len(card_ids)):
+    comparisons += 1
 # TODO: if card_ids[i] == card, add 1 to tap_counts[i], set found, break
+    if card_ids[i] == card:
+        tap_counts[i] += 1
+        found = True
+    break
 # TODO: after the inner loop, if not found, append `card` and 1 to the lists
+if not found: 
+        card_ids.append(card)
+        tap_counts.append(1)
 
 busiest = tap_counts.index(max(tap_counts))
 print("distinct cards:", len(card_ids))
@@ -75,18 +104,35 @@ print("busiest card:", card_ids[busiest], "with", max(tap_counts), "taps")
 
 # Step 4: Count Taps Per Card With a Dictionary, and Stations With a Set
 # TODO: assign `taps_by_card` to an empty dict (card ID: tap count)
+taps_by_card = {}
 # TODO: assign `lookups` to 0
+lookups = 0
 # TODO: loop over `taps`; add 1 to `lookups`
-# TODO: add 1 to row[1]'s count in `taps_by_card`, or set it to 1 if new
-# TODO: assign `stations` to set(); loop over `taps` and .add() row[2]
-# TODO: assign `repeat_riders` to 0
-# TODO: loop over `taps_by_card`; add 1 to `repeat_riders` if a count is > 1
+for row in taps:
+    card = row[1]
+    lookups += 1
 
+# TODO: add 1 to row[1]'s count in `taps_by_card`, or set it to 1 if new
+if card in taps_by_card:
+    taps_by_card[card] += 1
+else:
+    taps_by_card[card] = 1
+# TODO: assign `stations` to set(); loop over `taps` and .add() row[2]
+stations = set()
+for row in taps: 
+    stations.add(row[2])
+# TODO: assign `repeat_riders` to 0
+repeat_riders = 0
+# TODO: loop over `taps_by_card`; add 1 to `repeat_riders` if a count is > 1
+for card in taps_by_card:
+    if taps_by_card[card] > 1:
+        repeat_riders += 1
 print("distinct cards:", len(taps_by_card))
 print("lookups the dictionary needed:", lookups)
 print("unique stations:", len(stations), sorted(stations))
 print("cards that tapped more than once:", repeat_riders)
-print("taps for C001:", taps_by_card["C001"])
+print("taps for C001:", taps_by_card.get("C001", 0))
+
 
 # Step 4, answer 1:
 #
@@ -104,17 +150,17 @@ print("taps for C001:", taps_by_card["C001"])
 # TODO: replace each None with your Day 2 value; keep `stations` a set
 summary = {
     "service_day": "2026-03-02",
-    "total_taps": None,
-    "distinct_cards": None,
-    "stations": None,
-    "taps_by_card": None,
+    "total_taps": len(taps),
+    "distinct_cards": len(taps_by_card),
+    "stations": stations,
+    "taps_by_card": taps_by_card,
 }
 
 print("about to serialize", len(summary), "keys")
 # TODO: run the file and answer below before you change anything
 # TODO: then put # in front of the next two lines so Step 6 can run
-text = json.dumps(summary, indent=2)
-print(text)
+#text = json.dumps(summary, indent=2)
+#print(text)
 
 # Step 5, answer 1:
 #
@@ -125,10 +171,15 @@ print(text)
 
 
 # Step 6: Write `tap_summary.json`, Reload It, and Check Which Types Survived
+
 # TODO: assign summary["stations"] to a type JSON can hold; keep the key
+summary["stations"] = list(stations)
 # TODO: json.dump() `summary` into a with open("tap_summary.json", "w")
+#with open("tap_summary.json", "w") as f:
+    #json.dump(summary, f, indent=2)
 # TODO: replace None with json.load() of "tap_summary.json"
-reloaded = None
+#with open("tap_summary.json", "r") as f:
+   # reloaded = json.load(f)
 
 print("total_taps came back as:", reloaded["total_taps"])
 print("taps_by_card came back as a", type(reloaded["taps_by_card"]).__name__)
