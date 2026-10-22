@@ -69,3 +69,6 @@ print('----- 3. Refactor: Global to Parameter -----')
 # TODO: rewrite price_with_tax so tax_rate is a parameter
 # instead of a global it secretly reads
 tax_rate = 0.08
+def price_with_tax(price, tax_rate):
+    return price + (price * tax_rate)
+print(price_with_tax(100, tax_rate))
