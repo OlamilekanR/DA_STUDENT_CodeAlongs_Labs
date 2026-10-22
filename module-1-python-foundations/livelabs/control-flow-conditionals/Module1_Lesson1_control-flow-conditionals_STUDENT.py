@@ -69,17 +69,7 @@ for i in my_range:
 print('----- 3. range() Generates Numbers to Loop Over -----')
 # TODO: use range() to print the numbers 0 through 4
 
-transactions = ["Add 10","Remove 3","Add -5"]
-for item in transactions:
-    operation,quantity = item.split()
-    quantity = int(quantity)
-    if operation == "Add":
-        if quantity > 0:
-            print(item, "-valid quantity")
-        else: 
-            print(item, "-invalid quantity")
-    elif operation == "Remove": 
-            print(item, "-Processing Remove")
+
     
 # PREDICT before you run: Change range(5) to range(3). What does the loop print
 #                         now?

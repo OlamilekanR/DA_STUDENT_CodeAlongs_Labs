@@ -1,5 +1,6 @@
 # Fairhaven Recreation Center - class sign-up log, session block 4
-# one line per member sign-up:  member,class_name,sessions
+# one line per member sign-up:  
+member,class_name,sessions
 Nia,Yoga,4
 Omar,Swim,2
 Nia,Spin,6
