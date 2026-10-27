@@ -84,6 +84,7 @@ with open("data/rec_center_signups.txt") as f:
 
 def total_sessions(records):
     # TODO: add up the sessions column across every record in `records`
+    for record in records:
     # TODO: hand the total back to whoever called this. Do not print it.
     pass
 
