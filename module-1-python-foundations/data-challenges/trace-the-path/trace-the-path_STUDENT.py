@@ -219,7 +219,12 @@ for i in range(len(shifts) - 1):
 
 fixed_seen = 0
 # TODO: write the loop header that visits EVERY row, not all but one.
+for i in range(len(shifts)):
+    fixed_seen = fixed_seen + 1
+
+print("the row it never saw:", shifts[-1])
 #       The body below is already correct. Only the range changes.
+
 for i in None:
     fixed_seen = fixed_seen + 1
 

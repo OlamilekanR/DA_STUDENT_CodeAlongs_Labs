@@ -28,26 +28,34 @@ fill it in before you run the file again.
 print('----- 1. Define and Call, Live -----')
 # TODO: define a function named greet that prints a welcome
 # message, then call it twice
+def greet(n):
+
+    print("Welcome\n" * n, end="")
+greet(2)
 
 
 # ===== 2. Parameters, Live =====
-# Make greet work for anyone: pass in a name and print a personal welcome for
-# Jordan and Amara.
+# Make greet work for anyone: ask for a name and print a personal welcome.
 print('----- 2. Parameters, Live -----')
 # TODO: add a name parameter to greet, and print a
-# personalized welcome message for each of 2 names
+# personalized welcome message
+def greet(name):
+    print(f"Welcome, {name}!")
+
+my_name = input("What is your name? ")
+greet(my_name)
 
 # DISCUSS: The code is def double(n): print(n * 2), then double(5). Put the
 #          steps of that call in order. A: n becomes 5. B: the body runs. C:
 #          double gets called with 5.
 # Your answer:
-#
+# A,C,B
 #
 #
 # PREDICT before you run: Given def double(n): print(n * 2), what does
 #                         double(5) print?
 # Your answer:
-#
+# 10
 #
 
 
@@ -57,10 +65,16 @@ print('----- 2. Parameters, Live -----')
 print('----- 3. Return, Live -----')
 # TODO: write double(n) using return (not print), then use
 # its result in an expression - add 1 to it and print that
+def double(n):
+   total = n * 2
+   print(total + 1)
+   return total
+print  (double(5) + 1)
+
 
 # DISCUSS: A function should return a doubled value, but total + 1 raises
 #          TypeError. Using what you just saw in the Return, Live code, what's
 #          the most likely cause?
 # Your answer:
 #
-#
+# total + 1 is probably placed outside the return function making it not part of the double function.
