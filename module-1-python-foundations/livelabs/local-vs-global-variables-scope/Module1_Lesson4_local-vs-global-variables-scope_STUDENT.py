@@ -14,9 +14,15 @@ print('----- 1. Local Scope, Live -----')
 def make_total():
     total = 100
     return total
+<<<<<<< HEAD
 make_total()
 print(total) # NameError: total isn't defined here
 print(total) # NameError: total isn't defined here
+=======
+
+make_total()
+print(total) # NameError: total isn't defined here
+>>>>>>> 3a59e7fa748762b972938156985c6b14cc504f56
 
 # DISCUSS: set_x() sets x = 5, but print(x) outside raises NameError. Why?
 # Your answer:
@@ -36,8 +42,15 @@ def price_with_tax(price):
     return total
 
 print(price_with_tax(100))  # 108.0
+<<<<<<< HEAD
 
 # DISCUSS: Move price_with_tax to a file with no tax_rate. Why does it break?
+=======
+   
+# DISCUSS: Copy the price_with_tax function from the Reading a Global code into
+#          a new file, without the tax_rate = 0.08 line. It worked here. Why
+#          does it break there?
+>>>>>>> 3a59e7fa748762b972938156985c6b14cc504f56
 # Your answer:
 #
 
