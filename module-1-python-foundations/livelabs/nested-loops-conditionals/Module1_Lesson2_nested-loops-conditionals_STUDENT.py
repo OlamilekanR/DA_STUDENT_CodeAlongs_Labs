@@ -35,13 +35,17 @@ for row in range(3):
 #          prints only 3 lines instead of 6. What's the most likely cause?
 # Your answer:
 # print is indented outer range only runs.
+<<<<<<< HEAD
 >>>>>>> 3a59e7fa748762b972938156985c6b14cc504f56
+=======
+>>>>>>> 84938a3 (Implement functions to count and display long bookings; update sign-up logs format)
 #
 
 
 # ===== 2. Nested Conditional, Live =====
 # Check the operation type first, then if the quantity is positive.
 print('----- 2. Nested Conditional, Live -----')
+<<<<<<< HEAD
 <<<<<<< HEAD
 # TODO: check operation first
 # TODO: if it's "ADD", nest a second check that quantity is above 0
@@ -58,6 +62,14 @@ quantity = -5
 operation = "ADD"
 quantity = -5
 
+=======
+# TODO: check operation first; if it's "ADD", nest a second
+# check confirming quantity is greater than 0
+
+operation = "ADD"
+quantity = -5
+
+>>>>>>> 84938a3 (Implement functions to count and display long bookings; update sign-up logs format)
 if operation == "ADD":
     if quantity > 0:
         print("Adding quantity")
@@ -77,7 +89,10 @@ if operation == "ADD":
         print("Adding quantity")
     else:
         print("Invalid quantity")
+<<<<<<< HEAD
 >>>>>>> 3a59e7fa748762b972938156985c6b14cc504f56
+=======
+>>>>>>> 84938a3 (Implement functions to count and display long bookings; update sign-up logs format)
 
 
 # ===== 3. Putting It Together: Loop + Nested Conditional =====
@@ -102,7 +117,10 @@ for item in transactions:
             print(item, "-invalid quantity")
     elif operation == "Remove": 
             print(item, "-Processing Remove")
+<<<<<<< HEAD
 >>>>>>> 3a59e7fa748762b972938156985c6b14cc504f56
+=======
+>>>>>>> 84938a3 (Implement functions to count and display long bookings; update sign-up logs format)
 
 # PREDICT before you run: Which check flags "ADD -5" as invalid?
 # Your answer:

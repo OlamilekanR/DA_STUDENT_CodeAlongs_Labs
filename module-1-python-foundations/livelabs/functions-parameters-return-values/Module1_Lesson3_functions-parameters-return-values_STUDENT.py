@@ -5,6 +5,7 @@
 # Build a reusable greeting: one function, called twice, prints it twice.
 print('----- 1. Define and Call, Live -----')
 <<<<<<< HEAD
+<<<<<<< HEAD
 # TODO: define greet() to print a welcome message, then call it twice
 
 
@@ -23,12 +24,29 @@ greet(2)
 
 
 # ===== 2. Parameters, Live =====
+=======
+# TODO: define a function named greet that prints a welcome
+# message, then call it twice
+def greet(n):
+
+    print("Welcome\n" * n, end="")
+greet(2)
+
+
+# ===== 2. Parameters, Live =====
+>>>>>>> 84938a3 (Implement functions to count and display long bookings; update sign-up logs format)
 # Make greet work for anyone: ask for a name and print a personal welcome.
 print('----- 2. Parameters, Live -----')
 # TODO: add a name parameter to greet, and print a
 # personalized welcome message
 def greet(name):
     print(f"Welcome, {name}!")
+<<<<<<< HEAD
+=======
+
+my_name = input("What is your name? ")
+greet(my_name)
+>>>>>>> 84938a3 (Implement functions to count and display long bookings; update sign-up logs format)
 
 my_name = input("What is your name? ")
 greet(my_name)
@@ -37,10 +55,13 @@ greet(my_name)
 # DISCUSS: Order double(5): A: n becomes 5. B: body runs. C: it gets called.
 # Your answer:
 <<<<<<< HEAD
+<<<<<<< HEAD
 #
 # PREDICT before you run: If double(n) prints n * 2, what does double(5) print?
 # Your answer:
 =======
+=======
+>>>>>>> 84938a3 (Implement functions to count and display long bookings; update sign-up logs format)
 # A,C,B
 #
 #
@@ -48,7 +69,10 @@ greet(my_name)
 #                         double(5) print?
 # Your answer:
 # 10
+<<<<<<< HEAD
 >>>>>>> 3a59e7fa748762b972938156985c6b14cc504f56
+=======
+>>>>>>> 84938a3 (Implement functions to count and display long bookings; update sign-up logs format)
 #
 
 
@@ -66,6 +90,10 @@ def double(n):
    print(total + 1)
    return total
 print  (double(5) + 1)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 84938a3 (Implement functions to count and display long bookings; update sign-up logs format)
 
 >>>>>>> 3a59e7fa748762b972938156985c6b14cc504f56
 
@@ -73,6 +101,10 @@ print  (double(5) + 1)
 # Your answer:
 #
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 # total + 1 is probably placed outside the return function making it not part of the double function.
 >>>>>>> 3a59e7fa748762b972938156985c6b14cc504f56
+=======
+# total + 1 is probably placed outside the return function making it not part of the double function.
+>>>>>>> 84938a3 (Implement functions to count and display long bookings; update sign-up logs format)
