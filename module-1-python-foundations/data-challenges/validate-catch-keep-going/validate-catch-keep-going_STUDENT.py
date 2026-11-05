@@ -14,19 +14,29 @@ rows = [line for line in lines[1:] if line]
 
 # Step 1: Write `validate_request()` to Return a Verdict and a Reason
 # TODO: assign `EXPECTED_FIELDS` to 5
+EXPECTED_FIELDS = 5
 # TODO: assign `ALLOWED_STATUS` to ["Open", "In Progress", "Closed"]
-
+ALLOWED_STATUS = ["Open", "In Progress", "Closed"]
 
 def validate_request(row):
     # TODO: assign `fields` to `row` split on commas
+    fields = row.split(",")
     if len(fields) != EXPECTED_FIELDS:
         return False, "wrong field count: " + str(len(fields))
     # TODO: unpack `fields` into the five names in the CSV header
+    request_id, complaint_type, borough, days_open, status = fields
     # TODO: if `borough` is empty, return False and "borough is empty"
+
+    if not borough:
+        return (False,"borough is empty")
     # TODO: if `status` is not in ALLOWED_STATUS, return False and a reason
+    if status not in ALLOWED_STATUS:
+        
     # TODO: make that reason "status not allowed: " plus `status`
+        return (False,("status not allowed: ") + status)
     # TODO: return True and "ok"
-    pass
+    return (True,("ok"))
+    
 
 
 print(validate_request("SR-1001,Noise - Residential,Brooklyn,3,Closed"))
@@ -34,66 +44,109 @@ print(validate_request("SR-1004,Rodent,,6,Closed"))
 print(validate_request("SR-1009,Water System,Queens,4,Escalated"))
 
 # Step 1, answer 1:
-#
+# (True,"ok") for valid row.
 # Step 1, answer 2:
-#
+# (False,"Borough is empty") for missing borough.
 
 
 # Step 2: Run All 15 Rows Through the Validator and Report Each Rejection
 # TODO: assign `valid` to 0
+valid = 0
 # TODO: loop over `rows`; unpack validate_request(row) into ok, reason
+for row in rows:
+    ok, reason = validate_request(row)
 # TODO: if `ok`, add 1 to `valid`
+    if ok:
+        valid += 1
 # TODO: else print row.split(",")[0], "REJECTED -" and `reason`
+    else:
+         print(row.split(",")[0], "REJECTED -", reason)
 
 print("header:", header)
 print("rows read:", len(rows))
 print("passed Day 1 validation:", valid)
 
 # Step 2, answer 1:
-#
+# Total Rows ran through: 15
 # Step 2, answer 2:
-#
+#  Succesful Validated Rows. 
 
 
 # ===== Day 2 =====
 
 # Step 3: Build the Days-Open Report With No Protection and Watch It Crash
 # TODO: assign `total_days` and `counted` to 0
+total_days = 0
+counted = 0 
 # TODO: loop over `rows`; `continue` past any row validate_request() rejects
+for rows in rows:
 # TODO: assign `days_open` to int() of the row's fourth field
+   if not validate_request(row)[0]:
+       continue
 # TODO: add `days_open` to `total_days` and 1 to `counted`
+days_open = int(row.split(",")[3])
+total_days += days_open
+counted += 1
 # TODO: print the row's ID, "days open:" and `days_open`
+print(row.split(",")[0], "days open:", days_open)
+
 # TODO: after your answers, comment out this step so Step 4 can run
 
 print("average days open:", total_days / counted)
 
 # Step 3, answer 1:
-#
+# Crashes with ValueError on non-numeric and deformed "days_open"
 # Step 3, answer 2:
-#
+# Specific row in fourth field triggers crash.
 # Step 3, answer 3:
-#
+# ValueError raised by "int()"
 
 
 # Step 4: Rebuild the Report So Every Row Is Counted or Skipped
 def check_days_open(value):
     # TODO: in a try, assign `days` to int(value)
+    try:
+        days = int(value)
     # TODO: in except ValueError, return False and a reason
+    except ValueError:
+        return(False,("days_open is not a number:")+ "value")
     # TODO: make that reason "days_open is not a number: " plus `value`
     # TODO: if `days` is below 0, return False and a reason
+    if days < 0:
+        return (True,("ok"))
     # TODO: make that reason "days_open is negative: " plus `value`
     # TODO: return True and "ok"
-    pass
+    
 
 
 # TODO: assign `total_days`, `counted` and `skipped` to 0
+total_days = 0
+counted = 0 
+skipped = 0
 # TODO: loop over `rows`; unpack validate_request(row) into ok, reason
+for rows in rows:
+    ok, reason = validate_request(row)
 # TODO: if ok, unpack check_days_open() of the fourth field into ok, reason
+if ok:
+    fields = row.split(",")
+    days_open_ok, days_reason = check_days_open(fields[3])
+        
 # TODO: if still ok, add the days to `total_days` and 1 to `counted`
-# TODO: else add 1 to `skipped`; print the ID, "SKIPPED -" and `reason`
 
-print("counted:", counted, "| skipped:", skipped)
-print("average days open:", round(total_days / counted, 1))
+    if days_open_ok:
+        total_days += int(fields[3])
+        counted += 1
+# TODO: else add 1 to `skipped`; print the ID, "SKIPPED -" and `reason`
+    else: 
+        skipped+= 1
+        print(fields[0], "SKIPPED -", days_reason)
+else:
+
+    print("counted:", counted, "| skipped:", skipped)
+if counted > 0:
+    print("average days open:", round(total_days / counted, 1))
+else:
+    print("average days open: 0")
 
 # Step 4, answer 1:
 #
