@@ -27,19 +27,27 @@ fill it in before you run the file again.
 # none at all.
 print('----- 1. Any Number of Arguments With *args -----')
 # TODO: define total(*numbers) that returns sum(numbers)
+def total(*numbers):
+    return sum(numbers)
+  
 
+print(total(1,2,3))
 
 # TODO: call it with 1, 2, 3 and print the result
 # TODO: call it with 10, 20 and print the result
+print(total(10,20))
 # TODO: call it with no arguments at all and print the result
+#print(total()
 
+total(4, 4, 4, 4) 
+print(total(4, 4, 4, 4))
 # PREDICT before you run: What does total(4, 4, 4, 4) return? Write your guess,
 #                         then add print(total(4, 4, 4, 4)) under the three
 #                         calls in Any Number of Arguments With *args and run
 #                         it to check.
 # Your answer:
 #
-#
+# Thought it'd work by calling it due to the prior functions already doing the calculation, turns out i'd have to add print at some point either to the function or below for individuals.
 
 
 # ===== 2. Any Number of Named Arguments With **kwargs =====

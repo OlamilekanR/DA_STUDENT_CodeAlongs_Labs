@@ -74,15 +74,25 @@ print('----- 2. Catching the Crash -----')
 # message, and keeps going.
 print('----- 3. Putting It Together: Two except Clauses -----')
 # TODO: define validate_batch(lines)
+def validate_batch(lines):
 # TODO: for each line, inside a try block: split on ",", print
+ for line in lines:
+  try: 
+    fields = split.line(",")
 # "OK:" with fields[1] and int(fields[2])
+    print("OK:", fields[1], int(fields[2]))
+  except IndexError:
+   print("Bad format:", line)
+  except ValueError:
+    print("Bad Quantity:", line)
 # TODO: add an except IndexError clause printing "Bad format:" + line
 # TODO: add an except ValueError clause printing "Bad quantity:" + line
 
 # TODO: create a list called lines with these 3 strings:
+line = ["ADD,Chess,4", "REMOVE,Uno", "ADD,Dice,two"]
 # "ADD,Chess,4", "REMOVE,Uno", "ADD,Dice,two"
 # TODO: call validate_batch(lines)
-
+validate_batch(lines)
 # PREDICT before you run: For "REMOVE,Uno", which step raises the error?
 #                         line.split(","), fields[2], or int(...)?
 # Your answer:
