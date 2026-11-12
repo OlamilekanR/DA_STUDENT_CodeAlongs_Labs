@@ -13,13 +13,20 @@ with open(DATA_FILE) as f:
 
 # Step 1: Reproduce the Parallel-List Bug and Name the Wrong Stations
 # TODO: assign `names` and `bikes` to two empty lists
+names = []
+bikes = []
+
 # TODO: loop over `stations`; append each one's "name" to `names`
+for s in stations: 
+    names.append(s["names"])
+    bikes .append(s["bikes_available"])
 # TODO: append the same station's "bikes_available" to `bikes`
 names.pop(2)
 
 print("stations in the file:", len(stations))
 # TODO: loop over range(len(names)); print names[i], "|", bikes[i], "bikes"
-
+for i in range(len(names)):
+  print(names[i], "|", bikes[i], "bikes")
 # Step 1, answer 1:
 #
 # Step 1, answer 2:
@@ -31,6 +38,7 @@ print("stations in the file:", len(stations))
 # Step 2: Define the Station Class and Prove Two Instances Are Independent
 class Station:
     # TODO: add __init__ with name (str), capacity and bikes_available (int)
+    def __init__(self,name,capacity,)
     # TODO: in __init__, assign each parameter to self.<same name>
     # TODO: add a parameter and self.<name> for each extra field you agreed
     # TODO: add needs_restock(self): True if bikes_available < capacity / 4
@@ -38,9 +46,16 @@ class Station:
 
 
 # TODO: assign `fleet` to []; loop over `stations` as `s`
+fleet = []
+for s in stations:
+
 # TODO: append Station(s["name"], s["capacity"], s["bikes_available"])
 # TODO: assign `busy`, `quiet` to two stations with equal needs_restock()
+busy = []
+quiet = []
 # TODO: print both needs_restock() answers
+print()
+print()
 # TODO: set busy.bikes_available to 0, then print both answers again
 
 # Step 2, answer 1:
@@ -63,6 +78,8 @@ print(fleet[:2])
 # TODO: copy your Station class from Step 2 here
 # TODO: add __str__(self) to return text like "Grand Army Plaza: 6 of 48 bikes"
 # TODO: build it from self.name, self.bikes_available and self.capacity
+self.name
+self.bikes_available
 # TODO: rebuild `fleet` from this class with the same loop as Step 2
 
 print(fleet[0])
