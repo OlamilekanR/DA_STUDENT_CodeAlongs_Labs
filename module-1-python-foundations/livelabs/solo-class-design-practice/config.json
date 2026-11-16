@@ -1,0 +1,27 @@
+{
+  "library": {
+    "csv_path": "data/library.csv",
+    "currency": "USD",
+    "due_days": 14,
+    "late_fee_cap_per_item": 50,
+    "late_fee_per_week": 5,
+    "location": {
+      "shelf A": {
+        "A1": [
+          "Hammer",
+          "Drill"
+        ],
+        "A2": [
+          "Saw",
+          "Wrench"
+        ]
+      }
+    },
+    "name": "Tool Lending Library",
+    "safety_certifications": {
+      "Saw": "saw certification"
+    },
+    "late_fee_per_month": 20,
+    "late_fee_note": "No rounding up. 7 days = 1 week ($5). 28 days = 1 month ($20). A 30/31-day calendar month gives a 2-3 day safety net before the next 28-day month starts."
+  }
+}

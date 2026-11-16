@@ -1,7 +1,44 @@
-#!/usr/bin/env python3
+"Tool Lending Library - FINAL v3, two borrower lists."
+#Run: python3 solo-class-design-practice_STUDENT.py
+
+
+  #certified_borrowers = []   # said YES to "are you certified?"
+  #regular_borrowers   = []   # said NO, or never needed a cert
+
+#Checkout, safety first:
+#1. "What is your name?"
+# 2. "What tool?" -> find by name, location is its shelf unique ID
+#3. Stock check: 0 left -> blocked
+#4. Safety check, BEFORE access:
+#- safety_check True -> normal checkout
+#- safety_check False -> ask "Are you certified in this? Yes or no?"
+# YES -> append them to certified_borrowers, continue as normal
+#  NO  -> append them to regular_borrowers, DENY access:
+"Sorry, this item is off limits."
+#The CSV tool stays False for everyone. Only the LIST changes.
+#5. Same late fee for both lists: $5/week, capped $50.
+   #  Certified does NOT pay less, regular does NOT pay more.
+
+# Return: name + tool + shelf ID, check days late, print fee ($0 on time),+1 back to stock.
+
+from pathlib import Path
+import csv
+from csv import DictReader
+from collections import Counter
+from dataclasses import dataclass
+from datetime import date, time, datetime, timedelta
+from typing import List, Dict
+import json
+import math
+
+
+
+
+
+
+
 """Lab: Solo Class Design Rep
 GitBook Quest 1.8: Meet the Objects
-
 HOW TO RUN
     Open a terminal in this file's folder and run:
         python3 solo-class-design-practice_STUDENT.py
@@ -33,14 +70,16 @@ SUBMIT
 # lecture, and not one of the project's own 4 scenarios.
 
 # Your answer:
-#
+# simple way to track each tool.
 #
 
 # ===== Step 2: Decide Your Attributes, Each With a Reason From the Scenario =====
 
 # Your answer:
-#
-#
+# self,name,amount_free_to_borrowed, safety_check,):
+# name = identifier
+# amount_free_to_borrowed = total specific tools to be borrowed
+# 
 
 # ===== Step 3: Write __init__ and a Method, From Scratch =====
 # There is no single correct design here. Your class name, your attribute
@@ -48,7 +87,60 @@ SUBMIT
 # right. The test is whether each one traces back to the stakeholder
 # paragraph.
 
+
+
+
+
 # TODO: Write __init__ and a Method, From Scratch
+   
+
+@dataclass
+class Tool:
+    name: str
+    category: str
+    amount_free_to_borrow: int
+    safety_check: bool
+    location: str
+    max_loan_days: int
+
+    def __post_init__(self):
+        self.amount_free_to_borrow = int(self.amount_free_to_borrow)
+        self.safety_check = self.safety_check == "True" if isinstance(self.safety_check, str) else bool(self.safety_check)
+        self.max_loan_days = int(self.max_loan_days)
+
+    def __repr__(self):
+        return f"<Tool: {self.name} ({self.category}) - {self.amount_free_to_borrow} available>"
+
+
+@dataclass
+class Borrower:
+    # Rewritten 2026-11-15 by Lekan: NO list inserts.
+    # Certified is just Yes or No. No semicolon list in the CSV.
+    name: str
+    certified: bool = False
+
+    def __post_init__(self):
+        # CSV gives us "Yes" / "No" as text. Turn it into a real bool.
+        if isinstance(self.certified, str):
+            self.certified = self.certified.strip().lower() == "yes"
+
+
+@dataclass
+class Loan:
+    tool_name: str
+    borrower: str
+    location: str
+    checked_out_at: datetime
+    due_at: datetime
+    certified_override: bool = False
+
+    def is_overdue(self, now: datetime = None) -> bool:
+        return (now or datetime.now()) > self.due_at
+
+    def days_late(self, now: datetime = None) -> int:
+        return max(0, ((now or datetime.now()) - self.due_at).days)
+
+    def late_fee(self, config: Dict, now: datetime = None) -> float:
 
 # ===== Step 4: Instantiate 2+ Objects, Confirm Independent Storage =====
 # The same proof Day 13's lecture asked for, now on a class you designed
@@ -56,10 +148,16 @@ SUBMIT
 
 # TODO: Instantiate 2+ Objects, Confirm Independent Storage
 
+#Power_tool1 = tool_lending_library("Drill",5, True)
+#Power_tool2 = tool_lending_library("Saw",9, True)
+#ladder1 = tool_lending_library("Step",8, False)
+#ladder2 = tool_lending_library("Platform",3, True)
+#Pressure_washer1 = tool_lending_library("Cordless",2, True)
+#Pressure_washer2 = tool_lending_library("Corded",1, False)
 # ===== Step 5: Justify Your Design Choice in 2-3 Sentences =====
 
 # Your answer:
-#
+# I chose common household power tools for conventional translations; between the consumer and Stakeholder.
 #
 
 # ----- Share Out -----
@@ -75,7 +173,45 @@ SUBMIT
 # - Anything you got stuck on. Designing from a paragraph with nobody to
 #   check against is genuinely hard, and naming where it was hard is worth
 #   more to the room than a tidy answer.
-#
+
+def __str__(self):
+     return (f"{self.name}, {self.amount_free_to_borrow}, {self.safety_check}")
+def __repr__(self):
+     
+def amount_check(self):
+    return 
+
+def safety_check(self):
+        return self.safety_check
+
+
+
+print(Power_tool1.amount_free_to_borrow())
+print(Power_tool2.safety_check())
+
+print("-" * 50)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Expect to be asked "why that attribute and not another?" - there is no
 # single right list here, so the reasoning IS the answer.
 #
