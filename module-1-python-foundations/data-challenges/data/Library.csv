@@ -1,0 +1,105 @@
+name,category,amount_free_to_borrow,safety_check,location,max_loan_days
+Cordless Drill,Power Tools,8,True,Shelf A1,3
+Impact Driver,Power Tools,6,True,Shelf A2,3
+Circular Saw,Power Tools,4,False,Shelf A3,3
+Reciprocating Saw,Power Tools,5,False,Shelf A4,3
+Jigsaw,Power Tools,6,True,Shelf A5,3
+Angle Grinder,Power Tools,3,False,Shelf A6,3
+Random Orbit Sander,Power Tools,7,True,Shelf B1,3
+Belt Sander,Power Tools,4,True,Shelf B2,3
+Router,Power Tools,2,False,Shelf B3,3
+Plate Joiner,Power Tools,2,True,Shelf B4,3
+Corded Hammer Drill,Power Tools,5,False,Shelf B5,3
+Demolition Hammer,Power Tools,2,False,Shelf B6,7
+Miter Saw,Power Tools,2,False,Rack C1,7
+Table Saw,Power Tools,1,False,Rack C2,7
+Bench Grinder,Power Tools,3,False,Rack C3,7
+Scroll Saw,Power Tools,4,True,Shelf C4,3
+Oscillating Multi-Tool,Power Tools,6,True,Shelf C5,3
+Cordless Brad Nailer,Power Tools,5,True,Shelf D1,3
+Framing Nailer,Power Tools,3,False,Shelf D2,3
+Roofing Nailer,Power Tools,3,False,Shelf D3,3
+Heavy Duty Stapler,Power Tools,8,True,Shelf D4,3
+Heat Gun,Power Tools,6,True,Shelf D5,3
+Hot Glue Gun,Power Tools,10,True,Shelf D6,3
+Electric Paint Sprayer,Power Tools,4,True,Shelf E1,3
+Wallpaper Steamer,Power Tools,3,True,Shelf E2,3
+Gas Chainsaw,Yard Care,3,False,Shed F1,7
+Cordless Chainsaw,Yard Care,4,False,Shed F2,3
+Pole Saw,Yard Care,5,False,Shed F3,3
+Gas Leaf Blower,Yard Care,6,True,Shed F4,3
+Battery Leaf Blower,Yard Care,8,True,Shed F5,3
+String Trimmer (Gas),Yard Care,5,True,Shed G1,3
+String Trimmer (Battery),Yard Care,7,True,Shed G2,3
+Hedge Trimmer (Cordless),Yard Care,6,True,Shed G3,3
+Pole Hedge Trimmer,Yard Care,3,False,Shed G4,3
+Lawn Mower (Push),Yard Care,4,True,Shed H1,7
+Lawn Mower (Self-Propelled),Yard Care,2,True,Shed H2,7
+Rotary Tiller,Yard Care,2,False,Shed H3,7
+Earth Auger / Post Hole Digger,Yard Care,3,False,Shed H4,7
+Dethatcher,Yard Care,2,True,Shed H5,7
+Lawn Aerator,Yard Care,2,True,Shed H6,7
+Sod Cutter,Yard Care,1,False,Shed H7,7
+Compost Turner,Yard Care,4,True,Shelf I1,3
+Garden Cart,Yard Care,5,True,Yard Bay,7
+Wheelbarrow,Yard Care,6,True,Yard Bay,7
+Long Handle Shovel,Hand Tools,12,True,Rack J1,7
+Round Point Shovel,Hand Tools,10,True,Rack J2,7
+Square Point Shovel,Hand Tools,10,True,Rack J3,7
+Garden Spade,Hand Tools,8,True,Rack J4,7
+Post Hole Digger (Manual),Hand Tools,5,True,Rack J5,7
+Mattock,Hand Tools,4,False,Rack J6,7
+Pickaxe,Hand Tools,4,False,Rack J7,7
+Felling Axe,Hand Tools,5,False,Rack K1,3
+Splitting Maul,Hand Tools,6,False,Rack K2,3
+Hatchet,Hand Tools,8,True,Rack K3,3
+Bow Saw,Hand Tools,7,True,Rack K4,3
+Hand Pruners,Hand Tools,15,True,Bin L1,3
+Loppers,Hand Tools,10,True,Bin L2,3
+Hedge Shears (Manual),Hand Tools,8,True,Bin L3,3
+Leaf Rake,Hand Tools,12,True,Rack M1,7
+Bow Rake,Hand Tools,10,True,Rack M2,7
+Garden Cultivator,Hand Tools,9,True,Bin L4,3
+Post Pounder,Hand Tools,3,False,Rack M3,7
+Step Ladder (4ft),Ladders & Rigging,6,True,Ladder Bay 1,3
+Step Ladder (6ft),Ladders & Rigging,8,True,Ladder Bay 1,3
+Step Ladder (8ft),Ladders & Rigging,5,False,Ladder Bay 1,3
+Extension Ladder (16ft),Ladders & Rigging,4,False,Ladder Bay 2,3
+Extension Ladder (24ft),Ladders & Rigging,3,False,Ladder Bay 2,3
+Extension Ladder (32ft),Ladders & Rigging,2,False,Ladder Bay 2,3
+Multi-Position Ladder,Ladders & Rigging,5,False,Ladder Bay 3,3
+Aluminum Scaffold Plank,Ladders & Rigging,2,False,Ladder Bay 4,7
+Drywall Stilts,Ladders & Rigging,2,False,Storage Room,3
+Roof Anchor Kit,Ladders & Rigging,6,True,Shelf N1,3
+Floor Jack (3 Ton),Automotive,4,False,Auto Bay 1,3
+Jack Stands (Pair),Automotive,8,True,Auto Bay 1,3
+Engine Hoist / Crane,Automotive,1,False,Auto Bay 2,7
+Engine Stand,Automotive,2,False,Auto Bay 2,7
+Creep Car Seat,Automotive,5,True,Auto Bay 3,3
+Ramps (Car Service),Automotive,4,False,Auto Bay 3,3
+Tire Inflator (Digital),Automotive,6,True,Shelf N2,3
+Torque Wrench (1/2 in),Automotive,5,True,Shelf N3,3
+Torque Wrench (3/8 in),Automotive,5,True,Shelf N3,3
+Socket Set (Standard & Metric),Automotive,10,True,Shelf N4,3
+Wrench Set (Combination),Automotive,10,True,Shelf N4,3
+Pipe Wrench (14 in),Plumbing & Electrical,6,True,Shelf O1,3
+Pipe Wrench (18 in),Plumbing & Electrical,4,True,Shelf O1,3
+Tubing Cutter,Plumbing & Electrical,8,True,Shelf O2,3
+PEX Cinch Tool,Plumbing & Electrical,5,True,Shelf O3,3
+Torch (Propane/MAP),Plumbing & Electrical,6,False,Shelf O4,3
+Snake / Drain Auger (25ft),Plumbing & Electrical,5,True,Shelf O5,3
+Toilet Auger,Plumbing & Electrical,7,True,Shelf O5,3
+Multimeter (Digital),Plumbing & Electrical,8,True,Shelf P1,3
+Wire Strippers,Plumbing & Electrical,12,True,Shelf P2,3
+Voltage Detector,Plumbing & Electrical,10,True,Shelf P2,3
+Fish Tape (50ft),Plumbing & Electrical,6,True,Shelf P3,3
+Soldering Iron Kit,Plumbing & Electrical,7,True,Shelf P4,3
+Stud Finder,Measuring & Layout,10,True,Shelf Q1,3
+Laser Level,Measuring & Layout,4,True,Shelf Q2,3
+Torpedo Level (9in),Measuring & Layout,12,True,Shelf Q3,3
+Box Level (48in),Measuring & Layout,8,True,Shelf Q3,3
+Tape Measure (25ft),Measuring & Layout,20,True,Shelf Q4,3
+Chalk Line Reel,Measuring & Layout,10,True,Shelf Q4,3
+Metal Detector,Measuring & Layout,3,True,Shelf Q5,3
+Thermal Imaging Camera,Measuring & Layout,2,True,Shelf Q6,3
+Rotary Laser Level,Measuring & Layout,1,False,Shelf Q7,7
