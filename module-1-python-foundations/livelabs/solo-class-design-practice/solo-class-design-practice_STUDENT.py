@@ -141,6 +141,10 @@ class Loan:
         return max(0, ((now or datetime.now()) - self.due_at).days)
 
     def late_fee(self, config: Dict, now: datetime = None) -> float:
+        lib = config["library"]
+        weeks = self.days_late(now) // 7
+        return min(weeks * lib.get("late_fee_per_week", 5),lib.get("late_fee_cap_per_item", 50))
+
 
 # ===== Step 4: Instantiate 2+ Objects, Confirm Independent Storage =====
 # The same proof Day 13's lecture asked for, now on a class you designed
@@ -174,22 +178,9 @@ class Loan:
 #   check against is genuinely hard, and naming where it was hard is worth
 #   more to the room than a tidy answer.
 
-def __str__(self):
-     return (f"{self.name}, {self.amount_free_to_borrow}, {self.safety_check}")
-def __repr__(self):
-     
-def amount_check(self):
-    return 
-
-def safety_check(self):
-        return self.safety_check
 
 
 
-print(Power_tool1.amount_free_to_borrow())
-print(Power_tool2.safety_check())
-
-print("-" * 50)
 
 
 
@@ -218,5 +209,25 @@ print("-" * 50)
 # Be ready to answer "why did you do it that way?"
 
 # Your notes for the share out:
-#
-#
+# To make it deployable, in a scenerio. The point of this school is not only to learn, rather it is the implementation of learning.
+# The config json is to allow the developer to be able to change settings rather than hardcoding it. I experienced it during my data conversion; I had a syntax error attached to the end of the last field and if kept would drop an error. 2 ways left to fix either manually or write a code aned thus the reasoning for the json config.
+
+def load_config(path: Path = Path(__file__).resolve().parent / "config.json") -> Dict:
+    with open(path, mode="r", encoding="utf-8") as file:
+        return json.load(file)
+
+def save_config(config: Dict, path: Path = Path(__file__).resolve().parent / "config.json") -> None:
+    with open(path, mode="w", encoding="utf-8") as file:
+        json.dump(config, file, indent=2, ensure_ascii=False)
+
+def load_tools(path: Path) -> List[Tool]:
+    tools: List[Tool] = []
+    with open(path, mode="r", encoding="utf-8", newline="") as file:
+        reader = DictReader(file)
+        for row in reader:
+            if not row.get("name") or row["name"] == "}":
+                continue
+            tools.append(Tool(**row))
+    return tools
+
+

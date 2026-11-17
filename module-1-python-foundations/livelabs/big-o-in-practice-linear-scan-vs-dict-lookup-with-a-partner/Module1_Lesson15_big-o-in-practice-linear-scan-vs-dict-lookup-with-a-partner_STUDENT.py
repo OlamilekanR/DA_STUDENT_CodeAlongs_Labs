@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from dataclasses import dataclass
 """Big-O in Practice: Linear Scan vs. Dict Lookup, With a Partner
 Module 1: Python Foundations
 
@@ -24,13 +25,24 @@ fill it in before you run the file again.
 
 # ===== 1. Setup: A Class and Its Objects =====
 # Create a SupplyItem class and a list of four supply items to search.
-print('----- 1. Setup: A Class and Its Objects -----')
+@dataclass
+class SupplyItem:
+
+    print('----- 1. Setup: A Class and Its Objects -----')
 # TODO: define SupplyItem with __init__ storing name, count,
 # department
+
+def __init__(self,supplies,count,department):
+    supplies : str
+    count : int
+    department : str
 
 
 # TODO: create a list called supplies with 4 SupplyItem objects
 # of your own choosing
+
+    supplies = ["rice","beans","cheese","sauce"]
+    count = 0
 
 
 # ===== 2. Search 1: Linear Scan =====
@@ -40,7 +52,13 @@ print('----- 2. Search 1: Linear Scan -----')
 # TODO: define find_by_name_linear(supplies, name) that loops over
 # supplies and returns the item whose .name matches, or None if
 # nothing matches
-
+def find_by_name_linear(supplies,name):
+    for i in supplies:
+        if i.name == i.name:
+            return i.name 
+        else: 
+            return None
+            print("None.")
 
 # TODO: call it looking for "Tape", then print the result's name
 # and count

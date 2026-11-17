@@ -61,7 +61,7 @@ for line in records:
     else:
         parts = line.split(",")
         record_id = parts[0] if parts else "unknown"
-print("rejected", record_id + ":", reason)
+    print("rejected", record_id + ":", reason)
 print(len(valid), "usable records out of", len(records))
 # Step 1, answer 1:
 #
@@ -80,7 +80,6 @@ def summarize_donations(valid_records):
     for line in valid_records:
     # TODO: assign `category` to parts[2], `pounds` to float(parts[3])
         parts = line.split(",") if isinstance(line, str) else line
-        
         category = parts[2]
         pounds = float(parts[3])
     # TODO: if `category` is not in `by_category`, add an entry for it
@@ -97,8 +96,11 @@ def summarize_donations(valid_records):
     # TODO: add `pounds` to `total_pounds`
     
     # TODO: return a dict of "records", "total_pounds" and "by_category"
-    return {"records":valid, "total_pounds": total_pounds,"by_category": by_category}
-
+    return {
+        "records": valid_records, 
+        "total_pounds": total_pounds, 
+        "by_category": by_category
+}
 
 # TODO: assign `summary` to summarize_donations(valid)
 summary = summarize_donations(valid)
@@ -130,17 +132,18 @@ def run_pipeline(in_path, out_path, summarize):
     kept = []
     for line in read_donations(in_path):
             ok, reason = validate_donation(line)
-            if ok:
+           
         # TODO: append each record that validate_donation() passes to `kept`
-                kept.append(validate_donation(line))
+    if ok:
+        kept.append(line)
+
         # TODO: return export_summary() of summarize(kept) and `out_path`
     summary = summarize(kept)
     return export_summary(summary, out_path) 
 
 written = run_pipeline(DATA_FILE, "donation_summary.json",summarize_donations)
 print("wrote", written)
-for func in [read_donations, validate_donation, summarize_donations,export_summary]:
-    print(func.__name__ + ":", func.__doc__.splitlines()[0])
+
 
 # Step 3, answer 1:
 #
@@ -156,7 +159,7 @@ def summarize_by_day(valid_records):
     total_pounds = 0.0
 
     for record in valid_records:
-        parts = line.split(",")
+        parts = record.split(",")
         day = parts[4]
         pounds = float(parts[3])
 
@@ -164,7 +167,7 @@ def summarize_by_day(valid_records):
             by_day[day] = {"donations": 0, "pounds": 0.0}
     # TODO: return the same dict shape, with "by_day" keyed by parts[4]
     return {
-        "records": valid_records,
+        "records": len(valid_records),
         "total_pounds": total_pounds,
         "by_day": by_day
     }
