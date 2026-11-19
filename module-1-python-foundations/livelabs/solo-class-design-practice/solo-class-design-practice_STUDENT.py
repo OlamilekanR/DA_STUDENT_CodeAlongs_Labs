@@ -203,6 +203,11 @@ class Loan:
 
 
 
+
+
+
+
+
 # Expect to be asked "why that attribute and not another?" - there is no
 # single right list here, so the reasoning IS the answer.
 #

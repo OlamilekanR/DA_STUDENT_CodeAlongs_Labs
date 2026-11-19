@@ -2,6 +2,9 @@
 """Lookups Matter: see DataChallengeOverview&Steps.md for the steps."""
 
 import csv
+import path 
+import time
+from datetime import date, time, datetime, timedelta
 
 DATA_FILE = "member_directory.csv"  # edit the filepath with the data
 CHECKINS_FILE = "door_checkins.txt"  # edit the filepath with the data
@@ -49,6 +52,7 @@ for i in swipes:
 for i in count:
     linear_total = linear_total + count
 # TODO: print the ID, the name or "NOT A MEMBER", and the comparisons
+print(member_id, )
 # TODO: add each count to `linear_total`
 
 # TODO: add 1 to `not_members` for every swipe with no row
@@ -97,7 +101,7 @@ for member_id in swipes:
 
     # TODO: print swipe_number, the ID and both running totals
     print(swipe_number)
-    print(id)
+    print(members_by_id)
     # TODO: the first time dict_running < linear_running, set `pays_off_at`
 if dict_running < linear_running:
     print("dict pays off at swipe:", pays_off_at)
@@ -117,6 +121,7 @@ ai_claim = "TODO: paste what your AI actually told you"
 print("AI CLAIM:", ai_claim)
 
 # TODO: unpack find_linear() for swipes[0] into `_, front_count`
+_, front_count = find_linear(swipes[0], member_id)
 # TODO: unpack find_linear() for "M1313" into `_, absent_count`
 # TODO: assign `ratio` to round(linear_running / dict_running, 1)
 ratio = round(linear_running / dict_running, 1)
